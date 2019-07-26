@@ -17,3 +17,25 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+axios.get('http://serverlocation.com/data')
+    .then( response => {
+        // deal with the response data in here
+    })
+    .catch( err => {
+        // deal with the error in here
+    })
+
+function newArticleCard(article) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    const headline = document.createElement('div');
+    headline.classList.add('headline');
+    const author = document.createElement('div');
+    author.classList.add('author');
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('img-container');
+    const img = document.createElement('img');
+    const authorsName = document.createElement('span');
+    return card;  
+}

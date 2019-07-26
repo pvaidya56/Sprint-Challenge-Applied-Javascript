@@ -7,3 +7,21 @@
 //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
+
+const tabComponent = document.querySelector('.topics');
+
+axios.get('http://serverlocation.com/data')
+    .then( response => {
+        // deal with the response data in here
+    })
+    .catch( err => {
+        // deal with the error in here
+    })
+
+
+function newTopic(topic) {
+    const newTab = document.createElement('div');
+    newTab.classList.add('tab');
+    newTab.textContent = topic;
+    return newTab;
+}
