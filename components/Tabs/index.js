@@ -9,13 +9,18 @@
 //    <div class="tab">topic here</div>
 
 const tabComponent = document.querySelector('.topics');
-
-axios.get('http://serverlocation.com/data')
-    .then( response => {
-        // deal with the response data in here
+const tab = axios.get('https://lambda-times-backend.herokuapp.com/topics')
+    tab
+    .then(data => {
+        data.data.topics.forEach(item => {
+            const newTopic = newTopicComponent(item);
+            tabComponent.appendChild(newTopic);
+        })
+      
     })
     .catch( err => {
         // deal with the error in here
+        console.log('There was an error: ', err);
     })
 
 

@@ -17,16 +17,26 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+const newArticleCard = document.querySelector('.cards-container');
 
-axios.get('http://serverlocation.com/data')
-    .then( response => {
-        // deal with the response data in here
+const articleCard = axios.get('https://lambda-times-backend.herokuapp.com/articles')
+articleCard
+.then(data => {
+    console.log(data)
+    for(topic in data.data.articles) {
+        data.data.articles[topic].forEach(article => {
+            const newCard = ArticleCardComponent(article);
+            newArticleCard.appendChild(createNewCard)
+        });
+    }
+}
     })
     .catch( err => {
         // deal with the error in here
+        console.log('There was an error: ', err)
     })
 
-function newArticleCard(article) {
+function ArticleCardComponent(article) {
     const card = document.createElement('div');
     card.classList.add('card');
     const headline = document.createElement('div');
